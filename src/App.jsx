@@ -7,6 +7,44 @@ import styles from './App.module.css';
 import './global.css';
 
 
+const posts = [
+    {
+        id: 1,
+        author: {
+            avatarUrl: 'https://github.com/renanmarinhof.png',
+            name: 'Renan Marinho',
+            role: 'Web Developer'
+
+        },
+
+        content: [
+            { type: 'paragraph', content: 'Fala galeraa 👋' },
+            { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+            { type: 'link', content: '👉jane.design/doctorcare' },
+
+        ],
+        publishedAt: new Date('2023-10-21 15:39:00'),
+    },
+    {
+        id: 2,
+        author: {
+            avatarUrl: 'https://github.com/jenny-ribeiro.png',
+            name: 'Jenny Ribeiro',
+            role: 'Web Developer'
+
+        },
+
+        content: [
+            { type: 'paragraph', content: 'Fala galeraa 👋' },
+            { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+            { type: 'link', content: '👉jane.design/doctorcare' },
+
+        ],
+        publishedAt: new Date('2023-10-22 15:39:00'),
+    },
+]
+
+
 
 export function App() {
     return (
@@ -16,14 +54,18 @@ export function App() {
             <div className={styles.wrapper}>
                 <Sidebar />
                 <main>
-                    <Post
-                        author="Renan"
-                        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, 
-                                    minus? Fugit vitae dolorum autem repellat itaque sed aliquam quos saepe, 
-                                    architecto perferendis molestias qui consequuntur nobis illum dicta facilis ea."
-                    />
+                    {
+                        posts.map(post => {
+                            return (
+                                <Post
+                                    author={post.author}
+                                    content={post.content}
+                                    publishedAt={post.publishedAt}
+                                />
+                            )
 
-                    <Post author="Marinho" content="Um novo post muito legal" />
+                        })
+                    }
                 </main>
             </div>
 
